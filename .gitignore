@@ -1,0 +1,9 @@
+*.properties
+META-INF
+.ebextensions
+lib
+.idea
+*.iml
+*.class
+out
+out/*

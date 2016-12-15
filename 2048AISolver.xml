@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="2048aisolver" default="all">
+  
+  
+  <property file="2048AISolver.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.tox/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="lib/ant-javafx.jar"/>
+      <include name="lib/dt.jar"/>
+      <include name="lib/javafx-mx.jar"/>
+      <include name="lib/jconsole.jar"/>
+      <include name="lib/packager.jar"/>
+      <include name="lib/sa-jdi.jar"/>
+      <include name="lib/tools.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.org.springframework:spring-webmvc-portlet:3.1.0.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/el/el-api/1.0/el-api-1.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/portlet/portlet-api/2.0/portlet-api-2.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-web/3.1.0.RELEASE/spring-web-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc-portlet/3.1.0.RELEASE/spring-webmvc-portlet-3.1.0.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc/3.1.0.RELEASE/spring-webmvc-3.1.0.RELEASE.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module 2048AISolver -->
+  
+  <dirname property="module.2048aisolver.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.2048aisolver" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.2048aisolver" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.2048aisolver" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.2048aisolver" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+  
+  <property name="2048aisolver.output.dir" value="${module.2048aisolver.basedir}/out/production/2048AISolver"/>
+  <property name="2048aisolver.testoutput.dir" value="${module.2048aisolver.basedir}/out/test/2048AISolver"/>
+  
+  <path id="2048aisolver.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="2048aisolver.module.production.classpath">
+    <path refid="${module.jdk.classpath.2048aisolver}"/>
+    <path refid="library.org.springframework:spring-webmvc-portlet:3.1.0.release.classpath"/>
+  </path>
+  
+  <path id="2048aisolver.runtime.production.module.classpath">
+    <pathelement location="${2048aisolver.output.dir}"/>
+    <path refid="library.org.springframework:spring-webmvc-portlet:3.1.0.release.classpath"/>
+  </path>
+  
+  <path id="2048aisolver.module.classpath">
+    <path refid="${module.jdk.classpath.2048aisolver}"/>
+    <pathelement location="${2048aisolver.output.dir}"/>
+    <path refid="library.org.springframework:spring-webmvc-portlet:3.1.0.release.classpath"/>
+  </path>
+  
+  <path id="2048aisolver.runtime.module.classpath">
+    <pathelement location="${2048aisolver.testoutput.dir}"/>
+    <pathelement location="${2048aisolver.output.dir}"/>
+    <path refid="library.org.springframework:spring-webmvc-portlet:3.1.0.release.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.2048aisolver">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.2048aisolver">
+    <patternset refid="excluded.from.module.2048aisolver"/>
+  </patternset>
+  
+  <path id="2048aisolver.module.sourcepath">
+    <dirset dir="${module.2048aisolver.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.2048aisolver" depends="compile.module.2048aisolver.production,compile.module.2048aisolver.tests" description="Compile module 2048AISolver"/>
+  
+  <target name="compile.module.2048aisolver.production" description="Compile module 2048AISolver; production classes">
+    <mkdir dir="${2048aisolver.output.dir}"/>
+    <javac destdir="${2048aisolver.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.2048aisolver}/javac">
+      <compilerarg line="${compiler.args.2048aisolver}"/>
+      <bootclasspath refid="2048aisolver.module.bootclasspath"/>
+      <classpath refid="2048aisolver.module.production.classpath"/>
+      <src refid="2048aisolver.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.2048aisolver"/>
+    </javac>
+    
+    <copy todir="${2048aisolver.output.dir}">
+      <fileset dir="${module.2048aisolver.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.2048aisolver.tests" depends="compile.module.2048aisolver.production" description="compile module 2048AISolver; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.2048aisolver" description="cleanup module">
+    <delete dir="${2048aisolver.output.dir}"/>
+    <delete dir="${2048aisolver.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.2048aisolver, clean.artifact.webapp-exploded" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.2048aisolver" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.webapp" value="${basedir}/out/artifacts/WebApp"/>
+    <property name="artifact.output.webapp-exploded" value="${basedir}/out/artifacts/WebApp_Exploded"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.WebApp.war" value="${artifacts.temp.dir}/WebApp.war"/>
+  </target>
+  
+  <target name="clean.artifact.webapp-exploded" description="clean WebApp-Exploded artifact output">
+    <delete dir="${artifact.output.webapp-exploded}"/>
+  </target>
+  
+  <target name="artifact.webapp" depends="init.artifacts, artifact.webapp-exploded" description="Build &#39;WebApp&#39; artifact">
+    <property name="artifact.temp.output.webapp" value="${artifacts.temp.dir}/WebApp"/>
+    <mkdir dir="${artifact.temp.output.webapp}"/>
+    <zip destfile="${temp.jar.path.WebApp.war}">
+      <zipfileset dir="${artifact.output.webapp-exploded}"/>
+    </zip>
+    <copy file="${temp.jar.path.WebApp.war}" tofile="${artifact.temp.output.webapp}/WebApp.war"/>
+  </target>
+  
+  <target name="artifact.webapp-exploded" depends="init.artifacts, compile.module.2048aisolver" description="Build &#39;WebApp-Exploded&#39; artifact">
+    <mkdir dir="${artifact.output.webapp-exploded}"/>
+    <mkdir dir="${artifact.output.webapp-exploded}/WEB-INF"/>
+    <mkdir dir="${artifact.output.webapp-exploded}/WEB-INF/lib"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-webmvc-portlet/3.1.0.RELEASE/spring-webmvc-portlet-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-webmvc-portlet-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/el/el-api/1.0/el-api-1.0.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/el-api-1.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/portlet/portlet-api/2.0/portlet-api-2.0.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/portlet-api-2.0.jar"/>
+    <copy file="${path.variable.maven_repository}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/servlet-api-2.5.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-asm-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-beans-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-core-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-context-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-aop-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/aopalliance-1.0.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-expression-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-web/3.1.0.RELEASE/spring-web-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-web-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-webmvc/3.1.0.RELEASE/spring-webmvc-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-webmvc-3.1.0.RELEASE.jar"/>
+    <copy file="${path.variable.maven_repository}/org/springframework/spring-context-support/3.1.0.RELEASE/spring-context-support-3.1.0.RELEASE.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/spring-context-support-3.1.0.RELEASE.jar"/>
+    <copy file="${basedir}/../2048GameSolverFinal/lib/hibernate-validator-4.3.1.Final.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/hibernate-validator-4.3.1.Final.jar"/>
+    <copy file="${basedir}/../2048GameSolverFinal/lib/validation-api-1.0.0.GA.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/validation-api-1.0.0.GA.jar"/>
+    <copy file="${basedir}/../2048GameSolverFinal/lib/jboss-logging-3.1.0.CR2.jar" tofile="${artifact.output.webapp-exploded}/WEB-INF/lib/jboss-logging-3.1.0.CR2.jar"/>
+    <mkdir dir="${artifact.output.webapp-exploded}/WEB-INF/classes"/>
+    <copy todir="${artifact.output.webapp-exploded}/WEB-INF/classes">
+      <fileset dir="${2048aisolver.output.dir}"/>
+    </copy>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.webapp, artifact.webapp-exploded" description="Build all artifacts">
+    <mkdir dir="${artifact.output.webapp}"/>
+    <copy todir="${artifact.output.webapp}">
+      <fileset dir="${artifact.temp.output.webapp}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
